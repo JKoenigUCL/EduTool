@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+      h2 {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+      }
+
+      .video-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .video-card {
+        width: 45%;
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+      }
+
+      .video-card h3 {
+        font-size: 1em;
+        margin-bottom: 5px;
+      }
+
+      .video-card iframe {
+        width: 100%;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1></h1>
+      <div class="subtopics-container"></div>
+    </div>
+
+    <script>
+      const subtopics = {};
+
+      const subtopicsContainer = document.querySelector('.subtopics-container');
+
+      // Loop through each subtopic and create a video container for each one
+      subtopics.subtopics.forEach(subtopic => {
+        const videoContainer = document.createElement('div');
+        videoContainer.classList.add('video-container');
+        subtopicsContainer.appendChild(videoContainer);
+
+        // Add the subtopic title as a heading
+        const heading = document.createElement('h2');
+        heading.textContent = subtopic;
+        videoContainer.appendChild(heading);
+
+        // Loop through each video for the subtopic and create a video card for each one
+        subtopics.searchPrompts[subtopic][0].forEach(video => {
+          const videoCard = document.createElement('div');
+          videoCard.classList.add('video-card');
+          videoContainer.appendChild(videoCard);
+          // Add the video title as a heading
+          const videoTitle = document.createElement('h3');
+          videoTitle.textContent = video[0];
+          videoCard.appendChild(videoTitle);
+
+          // Embed the YouTube video as an iframe
+          const videoEmbed = document.createElement('iframe');
+          videoEmbed.src = `https://www.youtube.com/embed/${video[1]}`;
+          videoCard.appendChild(videoEmbed);
+        });
+      });
+    </script>
+  </body>
+</html>

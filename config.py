@@ -1,0 +1,2 @@
+youtube_api_key = 'AIzaSyBilb-HHOMen3YcXxGQrLTnBXXsOH5leec'
+openai_api_key = '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'
