@@ -1,6 +1,7 @@
 from flask import Flask, request
 from flask_restful import Resource, Api, reqparse
 
+import os
 import openai
 import googleapiclient.discovery
 import urllib.parse
@@ -8,7 +9,7 @@ import re
 import json
 import config
 
-openai.api_key = config.openai_api_key
+openai.api_key = os.environ.get('OPENAI_API_KEY')
 
 def search_youtube(chatgpt_query):
 
