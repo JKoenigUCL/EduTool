@@ -14,7 +14,7 @@ openai.api_key = os.environ.get('OPENAI_API_KEY')
 def search_youtube(chatgpt_query):
 
     # Replace with your own API key
-    api_key = config.youtube_api_key
+    api_key = os.environ.get('YOUTUBE_API_KEY')
 
     # Create a YouTube API client
     youtube = googleapiclient.discovery.build(
